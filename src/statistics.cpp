@@ -3,20 +3,20 @@
 #include <map>
 
 namespace statistics {
-std::vector<int> mostFrequentElements(const std::vector<int>& v) {
+std::vector<long long> mostFrequentElements(const std::vector<long long>& v) {
   if (v.size() == 0) {
     throw std::logic_error(
-        "There is no most frequent element in an array with 0 elements");
+        "There is no most frequent element in a vector with 0 elements");
   }
 
-  std::vector<int> res(0);
+  std::vector<long long> res(0);
 
-  std::map<int, int> frequencies;
+  std::map<long long, long long> frequencies;
   for (auto& e : v) {
     frequencies[e]++;
   }
 
-  int maxCount = 0;
+  long long maxCount = 0;
   for (auto& [element, frequency] : frequencies) {
     if (frequency > maxCount) {
       res.clear();
@@ -30,10 +30,25 @@ std::vector<int> mostFrequentElements(const std::vector<int>& v) {
   return res;
 }
 
-double average(const std::vector<int>& v) {
+double entryRate(const long long entry, const std::vector<long long>& v) {
+  if (v.size() == 0) {
+    return 0.0;
+  }
+
+  long long entryCount = 0;
+  for (auto& e : v) {
+    if (e == entry) {
+      entryCount++;
+    }
+  }
+
+  return entryCount * 1.0 / v.size();
+}
+
+double average(const std::vector<long long>& v) {
   if (v.size() == 0) {
     throw std::logic_error(
-        "There is no average in an array with 0 elements");
+        "There is no average in a vector with 0 elements");
   }
 
   double sum = 0;
@@ -44,9 +59,9 @@ double average(const std::vector<int>& v) {
   return sum / v.size();
 }
 
-double median(const std::vector<int>& v) {
+double median(const std::vector<long long>& v) {
   if (v.size() == 0) {
-    throw std::logic_error("There is no median in an array with 0 elements");
+    throw std::logic_error("There is no median in a vector with 0 elements");
   }
 
   size_t center_index = v.size() / 2;
