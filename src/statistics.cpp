@@ -1,6 +1,7 @@
 #include <vector>
 #include <stdexcept>
 #include <map>
+#include <set>
 
 namespace statistics {
 std::vector<long long> mostFrequentElements(const std::vector<long long>& v) {
@@ -30,6 +31,13 @@ std::vector<long long> mostFrequentElements(const std::vector<long long>& v) {
   return res;
 }
 
+double calculateRate(const long long frequency, const long long total_size) {
+  if (total_size == 0) {
+    throw std::runtime_error("Cannot divide by zero");
+  }
+  return frequency * 1.0 / total_size;
+}
+
 double entryRate(const long long entry, const std::vector<long long>& v) {
   if (v.size() == 0) {
     return 0.0;
@@ -42,7 +50,23 @@ double entryRate(const long long entry, const std::vector<long long>& v) {
     }
   }
 
-  return entryCount * 1.0 / v.size();
+  return calculateRate(entryCount, v.size());
+}
+
+std::vector<std::pair<long long, double>> allEntryRates(
+    const std::vector<long long>& v) {
+  std::map<long long, long long> frequencies;
+  for (auto& e : v) {
+    frequencies[e]++;
+  }
+
+  std::vector<std::pair<long long, double>> all_entry_rates;
+  for (auto& [element, frequency] : frequencies) {
+    double rate = calculateRate(frequency, v.size());
+    all_entry_rates.push_back({element, rate});
+  }
+
+  return all_entry_rates;
 }
 
 double average(const std::vector<long long>& v) {
