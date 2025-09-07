@@ -41,6 +41,9 @@
 *.dwo
 
 
+CMakeSettings.json
 /cmake-build-debug/
 /.idea/
 /build/
+/out/
+/.vs/
