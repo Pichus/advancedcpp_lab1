@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.20)
 project(advancedcpp_lab1)
+
+enable_testing()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -19,11 +21,21 @@ add_executable(advancedcpp_lab1
         src/DeckManager.cpp
         src/DeckManager.h
         src/Card.cpp
-        src/Card.h)
+        src/Card.h
+)
 
-target_link_libraries(advancedcpp_lab1
-        hello_test
+add_executable(advancedcpp_lab1_tests
+        tests/hello_test.cpp
+        src/DeckManager.cpp
+        src/DeckManager.h
+        src/Card.cpp
+        src/Card.h
+        tests/hello_test.cpp
+)
+
+target_link_libraries(advancedcpp_lab1_tests
         GTest::gtest_main
 )
 
 include(GoogleTest)
+gtest_discover_tests(advancedcpp_lab1_tests)
