@@ -3,16 +3,20 @@
 
 #include <compare>
 
-struct Card {
+class Card {
  private:
+  static constexpr int kMinSuit = 0;
+  static constexpr int kMaxSuit = 3;
   int suit_;
   int number_;
 
  public:
-  Card() : suit_(0), number_(0) {}
-  explicit Card(const int suit, const int number)
-      : suit_(suit), number_(number) {}
+  Card();
+  Card(int suit, int number);
   auto operator<=>(const Card&) const = default;
+
+  int suit() const;
+  int number() const;
 };
 
 #endif  // CARD_H
