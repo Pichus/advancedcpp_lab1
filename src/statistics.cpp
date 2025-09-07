@@ -92,7 +92,7 @@ double median(const std::vector<long long>& v) {
 
   double res = 0;
   if (v.size() % 2 == 0) {
-    res = (v[center_index] * 1.0 + v[center_index + 1]) / 2.0;
+    res = (v[center_index - 1] * 1.0 + v[center_index]) / 2.0;
   } else {
     res = v[center_index];
   }
