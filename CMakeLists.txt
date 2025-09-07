@@ -21,7 +21,7 @@ add_executable(advancedcpp_lab1
         src/DeckManager.cpp
         src/DeckManager.h
         src/Card.h
-)
+ "src/statistics.cpp" "src/statistics.h" "src/safeInputs.h" "src/safeInputs.cpp")
 
 add_executable(advancedcpp_lab1_tests
         tests/hello_test.cpp
@@ -29,7 +29,7 @@ add_executable(advancedcpp_lab1_tests
         src/DeckManager.h
         src/Card.h
         tests/hello_test.cpp
-)
+ "src/statistics.cpp" "src/statistics.h" "src/safeInputs.h" "src/safeInputs.cpp")
 
 target_link_libraries(advancedcpp_lab1_tests
         GTest::gtest_main
