@@ -4,10 +4,12 @@
 #include <random>
 
 DeckManager::DeckManager(const int cards_of_same_suit_count)
-    : current_card_index_(0),
+    : mersenne_twister_engine_(std::random_device{}()),
+      current_card_index_(0),
       cards_of_same_suit_count_(cards_of_same_suit_count) {
   deck_size_ = kSuitCount * cards_of_same_suit_count_;
   deck_.resize(deck_size_);
+
   GenerateDeck();
   ShuffleDeck();
 }
@@ -24,10 +26,7 @@ void DeckManager::GenerateDeck() {
 void DeckManager::ShuffleDeck() {
   current_card_index_ = 0;
 
-  std::random_device random_device;
-  std::mt19937 mersenne_twister_engine(random_device());
-
-  std::ranges::shuffle(deck_, mersenne_twister_engine);
+  std::ranges::shuffle(deck_, mersenne_twister_engine_);
 }
 
 Card DeckManager::operator()() {
