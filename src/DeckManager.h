@@ -10,7 +10,7 @@ class DeckManager {
 
   std::size_t current_card_index_;
   int cards_of_same_suit_count_;
-  int deck_size_;
+  std::size_t deck_size_;
   std::vector<Card> deck_;
 
   void GenerateDeck();
@@ -18,7 +18,7 @@ class DeckManager {
 
  public:
   explicit DeckManager(int cards_of_same_suit_count);
-  void operator()() const;
+  Card operator()();
 };
 
 #endif  // DECKMANAGER_H

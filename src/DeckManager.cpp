@@ -23,11 +23,19 @@ void DeckManager::GenerateDeck() {
 
 void DeckManager::ShuffleDeck() {
   current_card_index_ = 0;
-  
+
   std::random_device random_device;
   std::mt19937 mersenne_twister_engine(random_device());
 
   std::ranges::shuffle(deck_, mersenne_twister_engine);
 }
 
-void DeckManager::operator()() const {}
+Card DeckManager::operator()() {
+  if (current_card_index_ == deck_size_) {
+    ShuffleDeck();
+  }
+
+  const auto current_card = deck_[current_card_index_];
+  current_card_index_++;
+  return current_card;
+}
