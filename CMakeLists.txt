@@ -20,7 +20,6 @@ add_executable(advancedcpp_lab1
         src/main.cpp
         src/DeckManager.cpp
         src/DeckManager.h
-        src/Card.cpp
         src/Card.h
 )
 
@@ -28,7 +27,6 @@ add_executable(advancedcpp_lab1_tests
         tests/hello_test.cpp
         src/DeckManager.cpp
         src/DeckManager.h
-        src/Card.cpp
         src/Card.h
         tests/hello_test.cpp
 )
