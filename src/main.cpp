@@ -10,6 +10,11 @@
 #include "safeInputs.h"
 #include "statistics.h"
 
+const long long MIN_CARDS_AMOUNT_PER_SUIT_IN_DECK = 1;
+const long long MAX_CARDS_AMOUNT_PER_SUIT_IN_DECK = 5'000'000;
+const long long MIN_CARDS_AMOUNT_IN_SIMULATION = 1;
+const long long MAX_CARDS_AMOUNT_IN_SIMULATION = 5'000'000;
+
 void addNewStackLengthAndClear(
     std::vector<long long>& finished_card_stack_lengths,
     std::vector<Card>& current_card_stack) {
@@ -39,11 +44,15 @@ void processNewCard(const Card& new_card,
 
 std::vector<long long> startSimulation() {
     long long cards_amount_in_deck = safeInputs::safeBoundedNumberInput(
-        "Enter cards amount in deck in range [1, 9223372036854775807]: ", 1,
-        LLONG_MAX);
+        std::format("Enter cards amount in deck in range [{}, {}]: ",
+                    MIN_CARDS_AMOUNT_PER_SUIT_IN_DECK,
+                    MAX_CARDS_AMOUNT_PER_SUIT_IN_DECK),
+        MIN_CARDS_AMOUNT_PER_SUIT_IN_DECK, MAX_CARDS_AMOUNT_PER_SUIT_IN_DECK);
     long long cards_amount_in_simulation = safeInputs::safeBoundedNumberInput(
-        "Enter cards amount in simulation in range [1, 9223372036854775807]: ",
-        1, LLONG_MAX);
+        std::format("Enter cards amount in simulation in range [{}, {}]: ",
+                    MIN_CARDS_AMOUNT_IN_SIMULATION,
+                    MAX_CARDS_AMOUNT_IN_SIMULATION),
+        MIN_CARDS_AMOUNT_IN_SIMULATION, MAX_CARDS_AMOUNT_IN_SIMULATION);
 
     std::vector<long long> finished_card_stack_lengths;
     std::vector<Card> current_card_stack;
