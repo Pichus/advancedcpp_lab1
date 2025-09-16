@@ -1,4 +1,4 @@
-// Compiler: ... (needs to be specified)
+// Compiler: MSVC
 
 #include <exception>
 #include <format>
