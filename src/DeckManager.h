@@ -11,7 +11,7 @@ class DeckManager {
 
     std::mt19937 mersenne_twister_engine_;
     std::size_t current_card_index_;
-    int cards_of_same_suit_count_;
+    long long cards_of_same_suit_count_;
     std::size_t deck_size_;
     std::vector<Card> deck_;
 
@@ -19,7 +19,7 @@ class DeckManager {
     void ShuffleDeck();
 
    public:
-    explicit DeckManager(int cards_of_same_suit_count);
+    explicit DeckManager(long long cards_of_same_suit_count);
     Card operator()();
 };
 
