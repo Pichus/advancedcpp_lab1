@@ -56,17 +56,16 @@ namespace statistics {
         return calculateRate(entryCount, v.size());
     }
 
-    std::vector<std::pair<long long, double>> allEntryRates(
-        const std::vector<long long>& v) {
+    std::map<long long, double> allEntryRates(const std::vector<long long>& v) {
         std::map<long long, long long> frequencies;
         for (auto& e : v) {
             frequencies[e]++;
         }
 
-        std::vector<std::pair<long long, double>> all_entry_rates;
+        std::map<long long, double> all_entry_rates;
         for (auto& [element, frequency] : frequencies) {
             double rate = calculateRate(frequency, v.size());
-            all_entry_rates.push_back({element, rate});
+            all_entry_rates[element] = rate;
         }
 
         return all_entry_rates;
