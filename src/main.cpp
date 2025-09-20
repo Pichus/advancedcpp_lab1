@@ -90,7 +90,7 @@ void outputStatistics(const std::vector<long long>& v) {
               << std::endl;
 
     double median_length = statistics::median(v);
-    std::cout << std::format("Median length: {:.1g}", median_length)
+    std::cout << std::format("Median length: {:.1f}", median_length)
               << std::endl;
 }
 
