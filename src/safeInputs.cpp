@@ -14,7 +14,7 @@ namespace safeInputs {
         while (std::cin >> input_line) {
             std::istringstream iss(input_line);
             if (!(iss >> input_temp_number)) {
-                std::cout << "Input a valid integer:";
+                std::cout << "Input a valid integer: ";
                 continue;
             }
 
