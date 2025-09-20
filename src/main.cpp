@@ -1,5 +1,6 @@
 // Compiler: MSVC
 
+#include <algorithm>
 #include <exception>
 #include <format>
 #include <iostream>
@@ -68,6 +69,7 @@ std::vector<long long> startSimulation() {
     return finished_card_stack_lengths;
 }
 
+// Requires sorted vector to work properly
 void outputStatistics(const std::vector<long long>& v) {
     auto all_entry_rates = statistics::allEntryRates(v);
     std::cout << "Rates of all present lengths:" << std::endl;
@@ -95,6 +97,7 @@ void outputStatistics(const std::vector<long long>& v) {
 int main() {
     try {
         std::vector<long long> simulation_result = startSimulation();
+        std::sort(simulation_result.begin(), simulation_result.end());
         outputStatistics(simulation_result);
     } catch (std::logic_error& err) {
         std::cout << "Aborting program..." << std::endl;
